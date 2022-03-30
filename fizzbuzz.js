@@ -19,17 +19,17 @@ class Fizzbuzz {
     }
 }
 
-class Converter {
+class FizzbuzzConverter {
     convert(number) {
-
-        if (number % 3 === 0 && number % 5 === 0)
-            return 'fizzbuzz';
+        let result = '';
         if (number % 3 === 0)
-            return 'fizz';
+            result = 'fizz';
         if (number % 5 === 0)
-            return 'buzz';
-        return number.toString();
+            result += 'buzz';
+        if (result === '')
+            return number.toString();
+        return result;
     }
 }
 
-module.exports = { Fizzbuzz, Converter}
+module.exports = { Fizzbuzz, Converter: FizzbuzzConverter}

@@ -36,7 +36,7 @@ describe('Converter', () => {
         [2, '2'],
         [13, '13'],
     ])
-    ('converts number to string', (number, expectedResult) => {
+    ('converts number to string that arent divisible by 3 or 5', (number, expectedResult) => {
         const result = new Converter().convert(number);
         expect(result).toEqual(expectedResult);
     })
