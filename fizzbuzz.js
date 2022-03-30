@@ -1,39 +1,34 @@
-class FizzBuzz {
-    #fizzBuzzConverter
-    constructor(fizzBuzzConverter)  {
-        this.#fizzBuzzConverter = fizzBuzzConverter;
+// Generate an array of all numbers from 1 to x, converting the number to a string
+// When a number is divisible by 3, replace the number with fizz
+// When a number is divisible by 5, replace the number with buzz
+// When a number is divisible by both, replace the number with fizzbuzz
+
+
+class Fizzbuzz {
+    _fizzbuzzConverter;
+    constructor(fizzbuzzConverter = new FizzbuzzConverter()) {
+        this._fizzbuzzConverter = fizzbuzzConverter;
     }
-    /**
-     *
-     * @param {Number} numOfEntries
-     * @returns {Array<string>}
-     * @constructor
-     */
-    GenerateArray(numOfEntries) {
-        return Array(numOfEntries).fill(0).map((element, index) => {
-            const num = index + 1;
-            return this.#fizzBuzzConverter.ConvertNumberToString(num);
-        })
+
+    generate(numberOfEntries) {
+        const result = [];
+        for(let number = 1; number <= numberOfEntries; number++) {
+            result.push(this._fizzbuzzConverter.convertNumberToString(number));
+        }
+        return result;
     }
 }
 
-class FizzBuzzConverter {
-    /**
-     *
-     * @param {number} num
-     * @returns {string}
-     * @constructor
-     */
-    ConvertNumberToString(num) {
-        let result = '';
-        if (num % 3 === 0)
-            result += 'fizz';
-        if (num % 5 === 0)
-            result += 'buzz';
-        if (result !== '')
-            return result;
-        return num.toString();
+class FizzbuzzConverter {
+    convertNumberToString(number) {
+        if (number % 3 === 0 && number % 5 === 0)
+            return 'fizzbuzz';
+        if (number % 3 === 0)
+            return 'fizz';
+        if (number % 5 === 0)
+            return 'buzz'
+        return number.toString();
     }
 }
 
-module.exports = {FizzBuzz, FizzBuzzConverter};
+module.exports = { Fizzbuzz, FizzbuzzConverter }
